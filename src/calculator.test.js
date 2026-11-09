@@ -23,6 +23,11 @@ test('carries inches into yards when displaying the total measurement', () => {
   assert.equal(calculateBaseAmount(totalInches), 53250n)
 })
 
+test('carries 36 inches within a single measurement into the next yard', () => {
+  assert.equal(parseExpression('5.36'), 216n)
+  assert.equal(parseExpression('0.36'), 36n)
+})
+
 test('rounds amounts up to the next 50 ks', () => {
   assert.equal(calculateBaseAmount(1n), 150n)
   assert.equal(calculateBaseAmount(36n), 4000n)

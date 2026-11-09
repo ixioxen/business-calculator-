@@ -86,8 +86,6 @@ a:focus-visible {
   font-size: 15px;
 }
 
-.version-label,
-.eyebrow,
 .display-heading,
 .result-heading {
   font-size: 10px;
@@ -95,9 +93,24 @@ a:focus-visible {
   letter-spacing: 1.35px;
 }
 
-.version-label {
-  color: #8d9991;
-  font-size: 9px;
+.settings-toggle {
+  min-height: 36px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #dfe7df;
+  border-radius: 9px;
+  background: #fff;
+  color: var(--green);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.settings-toggle:hover,
+.cancel-button:hover {
+  background: #f5f8f4;
 }
 
 .calculator {
@@ -107,30 +120,144 @@ a:focus-visible {
   flex: 1;
 }
 
-.intro {
-  margin-bottom: 24px;
+.settings-panel {
+  padding: 22px;
+  border: 1px solid #eef0eb;
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow: 0 16px 45px rgb(34 56 43 / 7%);
 }
 
-.eyebrow {
-  margin: 0 0 10px;
+.settings-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.settings-kicker {
+  margin: 0 0 6px;
   color: #62846f;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
 
-h1 {
+.settings-panel h1 {
   margin: 0;
   color: var(--green-dark);
   font-family: 'Segoe UI', system-ui, sans-serif;
-  font-size: clamp(32px, 8vw, 40px);
+  font-size: 23px;
   font-weight: 700;
-  letter-spacing: -1.7px;
-  line-height: 1.12;
+  letter-spacing: -0.7px;
+  line-height: 1.25;
 }
 
-.intro-copy {
-  margin: 10px 0 0;
-  color: #78867e;
+.close-settings {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border: 1px solid #e8ece6;
+  border-radius: 9px;
+  background: white;
+  color: #738077;
+  cursor: pointer;
+  font-size: 23px;
+  line-height: 1;
+}
+
+.settings-form {
+  display: grid;
+  gap: 14px;
+}
+
+.settings-form label {
+  display: grid;
+  gap: 6px;
+  color: #59685e;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.settings-form input,
+.settings-form select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid #e2e8e1;
+  border-radius: 9px;
+  background: #fbfcfa;
+  color: var(--ink);
+  font: inherit;
   font-size: 14px;
-  line-height: 1.55;
+}
+
+.settings-form input:focus,
+.settings-form select:focus {
+  border-color: #87a792;
+  outline: 2px solid rgb(36 91 69 / 12%);
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 4px;
+}
+
+.cancel-button,
+.save-settings-button {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid #dfe7df;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cancel-button {
+  background: #fff;
+  color: #59685e;
+}
+
+.save-settings-button {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+
+.save-settings-button:hover {
+  background: #1d4e3b;
+}
+
+.settings-message {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.settings-form .settings-message {
+  margin: 0;
+}
+
+.message-warning {
+  background: #fff7e6;
+  color: #805d1c;
+}
+
+.message-error {
+  background: #fff0ee;
+  color: #9c3d35;
+}
+
+.message-success {
+  background: #edf6ed;
+  color: #37623d;
 }
 
 .calculator-card {
@@ -441,8 +568,16 @@ h1 {
     padding-left: 17px;
   }
 
+  .calculator {
+    padding-top: 24px;
+  }
+
   .calculator-card {
     padding: 15px;
+  }
+
+  .settings-panel {
+    padding: 17px;
   }
 
   .keypad {
@@ -451,6 +586,33 @@ h1 {
 
   .key {
     height: 51px;
+  }
+
+  .calculate-button {
+    padding-right: 10px;
+    padding-left: 12px;
+    font-size: 13px;
+  }
+
+  .rate-label {
+    padding: 7px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 340px) {
+  .calculator-page {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .calculator-card {
+    padding: 12px;
+  }
+
+  .settings-toggle {
+    padding-right: 9px;
+    padding-left: 9px;
   }
 }
 
