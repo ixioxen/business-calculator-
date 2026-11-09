@@ -48,7 +48,7 @@ test('uses configured rates and threshold in pricing', () => {
     discountThresholdYards: '8',
     language: 'en',
   })
-  const totalInches = parseExpression('8')
+  const totalInches = parseExpression('8.1')
 
   assert.deepEqual(
     calculatePricing(
@@ -58,9 +58,9 @@ test('uses configured rates and threshold in pricing', () => {
       settings.discountThresholdYards,
     ),
     {
-      totalAmount: 40000n,
-      freeAmount: 36000n,
-      off: 4000n,
+      totalAmount: 40150n,
+      freeAmount: 36150n,
+      off: 4050n,
     },
   )
 })

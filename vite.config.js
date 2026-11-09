@@ -1,8 +1,14 @@
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
-// https://vite.dev/config/
+const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
+const base = repositoryName?.endsWith('.github.io')
+  ? '/'
+  : repositoryName
+    ? `/${repositoryName}/`
+    : '/'
+
 export default defineConfig({
   plugins: [vue()],
-  base: '/business-calculator-/',
+  base,
 })

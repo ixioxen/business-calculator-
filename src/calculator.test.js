@@ -77,12 +77,12 @@ test('calculates the HLD decimal example with exact rounding', () => {
 })
 
 test('checks discount eligibility using the entire expression total', () => {
-  const totalInches = parseExpression('6 + 4')
+  const totalInches = parseExpression('6 + 4.1')
 
   assert.deepEqual(calculatePricing(totalInches), {
-    totalAmount: 40000n,
-    freeAmount: 39000n,
-    off: 1000n,
+    totalAmount: 40150n,
+    freeAmount: 39150n,
+    off: 1050n,
   })
 })
 
