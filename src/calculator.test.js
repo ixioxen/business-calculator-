@@ -33,7 +33,7 @@ test('rounds amounts up to the next 50 ks', () => {
   assert.equal(calculateBaseAmount(36n), 4000n)
 })
 
-test('does not apply the discount below 10 total yards', () => {
+test('does not apply the discount at or below 10 total yards', () => {
   const pricing = calculatePricing(359n)
 
   assert.equal(pricing.totalAmount, 39900n)
@@ -41,11 +41,17 @@ test('does not apply the discount below 10 total yards', () => {
   assert.equal('off' in pricing, false)
 })
 
-test('applies the discount at exactly 10 total yards', () => {
+test('applies the discount only when total yardage exceeds 10 yards', () => {
+  assert.deepEqual(calculatePricing(361n), {
+    totalAmount: 40150n,
+    freeAmount: 39150n,
+    off: 1050n,
+  })
+})
+
+test('does not apply the discount at exactly the threshold', () => {
   assert.deepEqual(calculatePricing(360n), {
     totalAmount: 40000n,
-    freeAmount: 39000n,
-    off: 1000n,
   })
 })
 

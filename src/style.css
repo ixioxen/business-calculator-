@@ -450,6 +450,7 @@ a:focus-visible {
   padding-bottom: 11px;
   color: #77847b;
   font-size: 12px;
+  font-weight: 700;
 }
 
 .result-row strong,
@@ -466,14 +467,14 @@ a:focus-visible {
   border-top: 1px solid #e5ebe4;
   color: #48584e;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .amount-row strong {
   color: var(--green-dark);
   font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 21px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.5px;
   text-align: right;
 }
@@ -481,7 +482,7 @@ a:focus-visible {
 .amount-row small {
   font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -489,6 +490,7 @@ a:focus-visible {
   padding-top: 11px;
   color: #77847b;
   font-size: 12px;
+  font-weight: 700;
 }
 
 .discount-row span small {
@@ -500,6 +502,8 @@ a:focus-visible {
 
 .discount-row strong {
   color: #34443a;
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .discount-row strong small,
@@ -508,16 +512,23 @@ a:focus-visible {
 }
 
 .savings-row {
-  margin-top: 10px;
-  padding: 10px 10px 0;
-  border-top: 1px solid #e5ebe4;
+  padding-top: 11px;
   color: #62806c;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.savings-row strong {
+.savings-value {
   color: var(--green);
+  font-size: 15px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.savings-value strong {
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .format-note {

@@ -274,7 +274,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyboardInput)
       <section v-else class="calculator-card" aria-label="Yard calculator">
         <div class="display-panel" aria-live="polite">
           <div class="display-heading">
-            <span>{{ t.measurements }}</span>
+            <span>{{ t.measurements }} </span>
             <span class="measurement-hint">{{ t.yardsInches }}</span>
           </div>
           <div class="expression" :class="{ 'is-empty': !expression }">
@@ -330,6 +330,12 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyboardInput)
             <strong>{{ formatNumber(result.totalAmount) }} <small>ks</small></strong>
           </div>
           <template v-if="result.freeAmount !== undefined">
+            <div class="savings-row">
+              <span>{{ t.off }}</span>
+              <span class="savings-value">
+                − <strong>{{ formatNumber(result.off) }} <small>ks</small></strong>
+              </span>
+            </div>
             <div class="discount-row">
               <span>
                 {{ t.freeAmount }}
@@ -338,10 +344,6 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyboardInput)
                 </small>
               </span>
               <strong>{{ formatNumber(result.freeAmount) }} <small>ks</small></strong>
-            </div>
-            <div class="savings-row">
-              <span>{{ t.off }}</span>
-              <strong>{{ formatNumber(result.off) }} <small>ks</small></strong>
             </div>
           </template>
         </section>

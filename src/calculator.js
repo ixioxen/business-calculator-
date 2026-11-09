@@ -47,7 +47,7 @@ export function calculatePricing(
 
   const pricing = { totalAmount: roundAmountUp(totalInches, baseRate) }
 
-  if (totalInches >= discountThresholdYards * INCHES_PER_YARD) {
+  if (totalInches > discountThresholdYards * INCHES_PER_YARD) {
     pricing.freeAmount = roundAmountUp(totalInches, discountRate)
     pricing.off = roundAmountUp(totalInches, baseRate - discountRate)
   }
