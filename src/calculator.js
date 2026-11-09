@@ -4,14 +4,23 @@ export const DISCOUNT_THRESHOLD_YARDS = 10n
 const INCHES_PER_YARD = 36n
 const ROUNDING_STEP = 50n
 
-export function parseExpression(expression) {
+function tokenizeExpression(expression) {
   const normalized = expression.trim()
 
   if (!normalized || !/^\d+(?:\.\d+)?(?:\s*\+\s*\d+(?:\.\d+)?)*$/.test(normalized)) {
     throw new Error('Enter one or more measurements, such as 2 + 3.12.')
   }
 
-  const totalInches = normalized.split('+').reduce((total, term) => {
+  return normalized.split('+').map((term) => term.trim())
+}
+
+export function countExpressionPieces(expression) {
+  return tokenizeExpression(expression).length
+}
+
+export function parseExpression(expression) {
+  const terms = tokenizeExpression(expression)
+  const totalInches = terms.reduce((total, term) => {
     const [yards, inches = '0'] = term.trim().split('.')
     return total + BigInt(yards) * INCHES_PER_YARD + BigInt(inches)
   }, 0n)

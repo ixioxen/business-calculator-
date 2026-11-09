@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { calculatePricing, parseExpression } from './calculator.js'
+import { calculatePricing, countExpressionPieces, parseExpression } from './calculator.js'
 import { translations } from './i18n.js'
 import { DEFAULT_SETTINGS, loadSettings, parseSettingsForm, saveSettings } from './settings.js'
 
@@ -115,6 +115,7 @@ function calculate() {
     const totalInches = parseExpression(expression.value)
     result.value = {
       totalInches,
+      pieceCount: countExpressionPieces(expression.value),
       ...calculatePricing(
         totalInches,
         settings.value.baseRate,
@@ -315,6 +316,10 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeyboardInput)
           <div class="result-heading">
             <span class="result-icon" aria-hidden="true">✓</span>
             <span>{{ t.yourTotal }}</span>
+          </div>
+          <div class="result-row">
+            <span>{{ t.numberOfPieces }}</span>
+            <strong>{{ formatNumber(result.pieceCount) }}</strong>
           </div>
           <div class="result-row">
             <span>{{ t.totalYards }}</span>

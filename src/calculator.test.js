@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { calculateBaseAmount, calculatePricing, parseExpression } from './calculator.js'
+import {
+  calculateBaseAmount,
+  calculatePricing,
+  countExpressionPieces,
+  parseExpression,
+} from './calculator.js'
 
 test('parses and prices the basic 2 + 3 example', () => {
   const totalInches = parseExpression('2 + 3')
@@ -12,6 +17,12 @@ test('parses and prices the basic 2 + 3 example', () => {
 test('treats digits after the decimal point as inches', () => {
   assert.equal(parseExpression('1.33 + 1.4'), 109n)
   assert.equal(calculateBaseAmount(parseExpression('1.33 + 1.4')), 12150n)
+})
+
+test('counts each plus-separated measurement as one piece of fabric', () => {
+  assert.equal(countExpressionPieces('2.32+2.1+2.4'), 3)
+  assert.equal(countExpressionPieces('2.32'), 1)
+  assert.throws(() => countExpressionPieces('2.32+'))
 })
 
 test('carries inches into yards when displaying the total measurement', () => {
